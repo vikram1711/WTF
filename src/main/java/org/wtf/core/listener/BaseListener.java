@@ -26,6 +26,7 @@ import org.testng.IRetryAnalyzer;
 import org.testng.ISuite;
 import org.testng.ISuiteResult;
 import org.testng.ITestContext;
+import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.internal.Utils;
 import org.testng.xml.XmlSuite;
@@ -45,7 +46,7 @@ import org.wtf.core.feature.xmljunit.XmlJuintReport;
  * 
  * @author venkatesan.sundramurthy@gmail.com (Venkatesan Sundramurthy)
  */
-public class BaseListener implements IReporter {
+public class BaseListener implements ITestListener, IReporter {
 
   public static Date testStartTime = new Date();
   public int totalTestCount;
@@ -502,19 +503,6 @@ public class BaseListener implements IReporter {
         .getTestContext()
         .getName(); 
   }
-
-  protected String getSuiteNameFromXMLorTestFlag(ITestResult tr) {
-    // Set test ID.
-    String testId = tr.getMethod().getRealClass().toString();
-    String[] bits = testId.split("\\.");
-    testId = bits[bits.length-1];
-
-    if (WTFTestConfig.getReportSuiteName() != null) {
-      testId = WTFTestConfig.getReportSuiteName();
-    }
-    return testId;
-  }
-
 
   public static String getDetailedStackTrace(ITestResult tr) {
     String failureTrace = "";

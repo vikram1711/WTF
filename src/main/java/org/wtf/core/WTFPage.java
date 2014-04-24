@@ -4,11 +4,8 @@
 
 package org.wtf.core;
 
-import static org.wtf.util.WTFUtil.clickWhenReady;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.wtf.util.WTFUtil.LocatorType;
 
 import org.wtf.core.WTFObject;
 import org.wtf.core.WTFPage;
@@ -55,9 +52,4 @@ public abstract class WTFPage extends WTFObject {
    * This is a dummy place holder method.
    */
   public abstract WTFPage waitForPageToLoad();
-
-  
-  public void signOut() {
-    clickWhenReady("Sign out", LocatorType.LINK_TEXT, getDriver(), getWait());
-  }
 }
